@@ -10,18 +10,31 @@ import { motion } from "framer-motion";
 export default function Services() {
   const ServiceSection = ({ title, desc, img, reverse, bullets }) => (
     <Box sx={{ mb: { xs: 8, md: 16 } }}>
-      <Grid container spacing={8} alignItems="center" direction={reverse ? "row-reverse" : "row"}>
-        <Grid item xs={12} md={6}>
-          <motion.div initial={{ opacity: 0, x: reverse ? 40 : -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} style={{ width: "100%" }}>
-            <Box sx={{ position: "relative", width: "100%" }}>
-              <Box sx={{ position: "absolute", inset: -20, background: "linear-gradient(135deg, rgba(11,60,93,0.1) 0%, rgba(0,168,168,0.1) 100%)", borderRadius: "32px", zIndex: 0, transform: reverse ? "rotate(3deg)" : "rotate(-3deg)" }} />
-              <Paper sx={{ width: "100%", position: "relative", zIndex: 1, height: { xs: 300, md: 400 }, backgroundImage: `url(${img})`, backgroundSize: "cover", backgroundPosition: "center", borderRadius: "24px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", overflow: "hidden" }} />
+      <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center" direction={{ xs: "column", md: reverse ? "row-reverse" : "row" }}>
+        <Grid item xs={12} md={6} sx={{ width: '100%' }}>
+          <motion.div initial={{ opacity: 0, x: reverse ? 40 : -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ width: "100%" }}>
+            <Box sx={{ position: "relative", width: "100%", height: { xs: 300, md: 400 } }}>
+              <Box sx={{ position: "absolute", inset: "-15px", background: "linear-gradient(135deg, rgba(11,60,93,0.1) 0%, rgba(0,168,168,0.1) 100%)", borderRadius: "32px", zIndex: 0, transform: reverse ? "rotate(3deg)" : "rotate(-3deg)" }} />
+              <Box 
+                sx={{ 
+                  position: "relative", 
+                  zIndex: 1, 
+                  width: "100%", 
+                  height: "100%", 
+                  backgroundImage: `url(${img})`, 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center", 
+                  borderRadius: "24px", 
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)", 
+                  overflow: "hidden" 
+                }} 
+              />
             </Box>
           </motion.div>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <motion.div initial={{ opacity: 0, x: reverse ? -40 : 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.2 }}>
-            <Typography variant="h3" sx={{ color: "#0B3C5D", fontWeight: 800, mb: 3, letterSpacing: -0.02 }}>
+        <Grid item xs={12} md={6} sx={{ width: '100%' }}>
+          <motion.div initial={{ opacity: 0, x: reverse ? -40 : 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
+            <Typography variant="h3" sx={{ color: "#0B3C5D", fontWeight: 800, mb: 3, letterSpacing: -0.02, fontSize: { xs: "2rem", md: "2.5rem" } }}>
               {title}
             </Typography>
             <Box sx={{ width: 60, height: 4, background: "linear-gradient(90deg, #0B3C5D 0%, #00A8A8 100%)", borderRadius: 2, mb: 4 }} />
@@ -33,7 +46,7 @@ export default function Services() {
             ))}
 
             {bullets && (
-              <Box sx={{ mt: 4, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+              <Box sx={{ mt: 4, display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, gap: 2 }}>
                 {bullets.map((item, i) => (
                   <Box key={i} sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                     <Box sx={{ width: 8, height: 8, borderRadius: "50%", background: "#00A8A8", flexShrink: 0 }} />

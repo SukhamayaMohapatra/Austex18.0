@@ -19,7 +19,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 
 export default function Contact() {
   const InfoItem = ({ icon, title, children }) => (
-    <Box sx={{ display: "flex", gap: 3, mb: 5 }}>
+    <Box sx={{ display: "flex", gap: 3, mb: 5, alignItems: "center" }}>
       <Box
         sx={{
           width: 64,
@@ -56,7 +56,7 @@ export default function Contact() {
       />
 
       <SectionWrapper bg="white">
-        <Grid container spacing={8}>
+        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
           {/* LEFT INFO */}
           <Grid item xs={12} md={5}>
             <Typography variant="h3" sx={{ color: "#0B3C5D", fontWeight: 800, mb: 3 }}>
